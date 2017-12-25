@@ -21,8 +21,10 @@ def main():
 
     if not os.path.exists(path):
         module.fail_json(msg='[Error] file '+ path +' is not found.')
+        
     elif os.path.isdir(path):
         module.fail_json(msg='[Error] '+ path +' is directory.')
+        
     elif os.path.islink(path):
         module.fail_json(msg='[Error] '+ path +' is link.')
 
@@ -36,6 +38,7 @@ def main():
             module.exit_json(changed=False)
     
         prev = re.findall(prev, line, re.MULTILINE)
+        
         if not prev:
             module.fail_json(msg='[Error] prev lines "'+ prev +'" is not found.')
         
