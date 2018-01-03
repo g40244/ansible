@@ -10,7 +10,7 @@ def main():
     module = AnsibleModule(
         dict(
             path=dict(required=True),
-            prev=dict(required=False, default=''),
+            prev=dict(required=True),
             current=dict(required=True),
             state=dict(required=True, choices=['present', 'absent'])
         )
